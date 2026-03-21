@@ -2,23 +2,33 @@ import express from "express";
 import cors from "cors";
 import { errorHandler } from "./middleware/errorMiddleware";
 import { env } from "./config/env";
-import { encapsulate } from "crypto";
+import authRoutes from "./routes/authRoutes";
 
 const app = express();
 
-app.use(
-  cors({
-    origin:
-      env.NODE_ENV === "production"
-        ? "https://keluhin.vercel.app"
-        : "http://localhost:5173",
-    credentials: true,
-  })
-);
+app.get("/test-direct", (req, res) => {
+  console.log("TEST DIRECT HIT");
+
+  res.json({ message: "direct route bekerja!" });
+
+  app.use(
+    cors({
+      origin:
+        env.NODE_ENV === "production"
+          ? "https://keluhin.vercel.app"
+          : "http://localhost:5173",
+      credentials: true,
+    })
+  );
+});
 
 app.use(express.json());
 
-// app.use("/api/auth", require("./routes/authRoutes"));
+console.log("Registering routes");
+
+app.use("/api/auth", authRoutes);
+console.log("Auth routes registered");
+
 // app.use("/api/posts", require("./routes/postRoutes"));
 // app.use("/api/comments", require("./routes/commentRoutes"));
 

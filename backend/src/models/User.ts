@@ -3,7 +3,7 @@ import mongoose, { Document, Schema } from "mongoose";
 export interface IUser {
   googleId: string;
   email: string;
-  anonymousId: string;
+  anonymId: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -24,7 +24,7 @@ const UserSchema = new Schema<IUserDocument>(
       unique: true,
       lowercase: true,
     },
-    anonymousId: {
+    anonymId: {
       type: String,
       required: true,
       unique: true,
