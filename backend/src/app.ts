@@ -3,6 +3,7 @@ import cors from "cors";
 import { errorHandler } from "./middleware/errorMiddleware";
 import { env } from "./config/env";
 import authRoutes from "./routes/authRoutes";
+import postRoutes from "./routes/postRoutes";
 
 const app = express();
 
@@ -23,11 +24,12 @@ app.get("/test-direct", (req, res) => {
 });
 
 app.use(express.json());
-
 console.log("Registering routes");
 
 app.use("/api/auth", authRoutes);
 console.log("Auth routes registered");
+
+app.use("/api/posts", postRoutes);
 
 // app.use("/api/posts", require("./routes/postRoutes"));
 // app.use("/api/comments", require("./routes/commentRoutes"));
