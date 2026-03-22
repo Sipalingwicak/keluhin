@@ -13,7 +13,7 @@ const generateToken = (userId: string): string => {
   return jwt.sign({ userId }, env.JWT_SECRET, { expiresIn: "7d" });
 };
 
-const generateAnonymId = (): string => {
+const generateAnonymousId = (): string => {
   const randomNum = Math.floor(Math.random() * 9000) + 1000;
   return `Anonim ${randomNum}`;
 };
@@ -45,7 +45,7 @@ export const googleLogin = asyncHandler(
       user = await User.create({
         googleId,
         email,
-        anonymId: generateAnonymId(),
+        anonymousId: generateAnonymousId(),
       });
     }
 
@@ -56,7 +56,7 @@ export const googleLogin = asyncHandler(
         {
           token,
           user: {
-            anonymId: user.anonymId,
+            anonymousId: user.anonymousId,
             email: user.email,
           },
         },
@@ -74,7 +74,7 @@ export const getMe = asyncHandler(
 
     res.status(200).json(
       ApiResponse.success({
-        anonymId: req.user.anonymId,
+        anonymousId: req.user.anonymousId,
         email: req.user.email,
       })
     );

@@ -1,10 +1,10 @@
 import mongoose, { Document, Schema } from "mongoose";
 
 export interface IComment {
-  content: String;
-  postId: mongoose.Types.ObjectId;
-  userId: mongoose.Types.ObjectId;
-  anonymousLabel: String;
+  content: string;
+  postId: mongoose.Types.ObjectId | string;
+  userId: mongoose.Types.ObjectId | string;
+  anonymousLabel: string;
 }
 
 export interface ICommentDocument extends IComment, Document {}

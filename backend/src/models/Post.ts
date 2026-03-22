@@ -3,7 +3,7 @@ import mongoose, { Document, Schema } from "mongoose";
 export interface IPost {
   content: string;
   userId: mongoose.Types.ObjectId | null;
-  anonymLabel: String;
+  anonymousLabel: String;
   likes: mongoose.Types.ObjectId[];
   dislikes: mongoose.Types.ObjectId[];
   commentsCount: number;
@@ -25,7 +25,7 @@ const PostSchema = new Schema<IPostDocument>(
       ref: "User",
       default: null,
     },
-    anonymLabel: {
+    anonymousLabel: {
       type: String,
       ref: "User",
     },

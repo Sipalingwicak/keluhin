@@ -55,14 +55,14 @@ export const createPost = asyncHandler(
       throw new AppError("gak ada yang dikeluhin", 400);
     }
 
-    const anonymLabel = req.user
-      ? req.user.anonymId
+    const anonymousLabel = req.user
+      ? req.user.anonymousId
       : `Anonim#${Math.floor(Math.random() * 9000) + 1000}`;
 
     const post = await Post.create({
       content,
       userId: req.user ? req.user._id : null,
-      anonymLabel,
+      anonymousLabel,
     });
 
     res

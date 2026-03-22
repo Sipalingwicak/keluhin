@@ -4,11 +4,12 @@ import { errorHandler } from "./middleware/errorMiddleware";
 import { env } from "./config/env";
 import authRoutes from "./routes/authRoutes";
 import postRoutes from "./routes/postRoutes";
+import commentRoutes from "./routes/commentRoutes";
 
 const app = express();
 
 app.get("/test-direct", (req, res) => {
-  console.log("TEST DIRECT HIT");
+  // console.log("TEST DIRECT HIT");
 
   res.json({ message: "direct route bekerja!" });
 
@@ -24,12 +25,14 @@ app.get("/test-direct", (req, res) => {
 });
 
 app.use(express.json());
-console.log("Registering routes");
+// console.log("Registering routes");
 
 app.use("/api/auth", authRoutes);
-console.log("Auth routes registered");
+// console.log("Auth routes registered");
 
 app.use("/api/posts", postRoutes);
+
+app.use("/api/comments", commentRoutes);
 
 // app.use("/api/posts", require("./routes/postRoutes"));
 // app.use("/api/comments", require("./routes/commentRoutes"));
