@@ -56,7 +56,7 @@ export const createPost = createAsyncThunk(
   "posts/create",
   async (content: string, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post(`/api/post`, { content });
+      const response = await axiosInstance.post(`/api/posts`, { content });
       return response.data.data;
     } catch (error: unknown) {
       if (error instanceof Error) {

@@ -8,22 +8,16 @@ import commentRoutes from "./routes/commentRoutes";
 
 const app = express();
 
-app.get("/test-direct", (req, res) => {
-  // console.log("TEST DIRECT HIT");
-
-  res.json({ message: "direct route bekerja!" });
-
-  app.use(
-    cors({
-      origin:
-        env.NODE_ENV === "production"
-          ? "https://keluhin.vercel.app"
-          : "http://localhost:5173",
-      credentials: true,
-    })
-  );
-});
-
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:8080",
+      env.NODE_ENV === "production" ? "https://keluhin.vercel.app" : "",
+    ].filter(Boolean),
+    credentials: true,
+  })
+);
 app.use(express.json());
 // console.log("Registering routes");
 
