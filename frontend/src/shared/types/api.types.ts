@@ -18,7 +18,7 @@ export interface User {
 export interface Post {
   _id: string;
   content: string;
-  anonymousLaber: string;
+  anonymousLabel: string;
   userId: string | null;
   likes: string[];
   dislikes: string[];
