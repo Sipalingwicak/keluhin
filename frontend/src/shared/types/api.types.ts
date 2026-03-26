@@ -11,6 +11,7 @@ export interface ApiError {
 }
 
 export interface User {
+  _id: string;
   anonymousId: string;
   email: string;
 }

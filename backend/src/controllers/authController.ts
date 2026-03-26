@@ -56,6 +56,7 @@ export const googleLogin = asyncHandler(
         {
           token,
           user: {
+            _id: user._id.toString(),
             anonymousId: user.anonymousId,
             email: user.email,
           },
