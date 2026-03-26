@@ -11,6 +11,7 @@ const NewPostForm = () => {
 
   const maxLength = 300;
   const remaining = maxLength - content.length;
+  const currentLength = content.length;
 
   const handleSubmit = async () => {
     if (!content.trim()) return;
@@ -53,7 +54,7 @@ const NewPostForm = () => {
               remaining < 100 ? "text-error" : "text-base-content/40"
             }`}
           >
-            {remaining} karakter tersisa
+            {`${currentLength}/${remaining}`}
           </span>
 
           <button
